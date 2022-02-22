@@ -3,7 +3,7 @@ import numpy as np
 def load_words():
     ''' loads words from text file; returns numpy array of strings
     ''' 
-    with open('five_letter_words.txt','r') as f:
+    with open('wordle_blog/five_letter_words.txt','r') as f:
         wordgen = (w for w in f.read().upper().split() if len(w)==5 and w.isalpha())
     
     return np.array(tuple(wordgen))
