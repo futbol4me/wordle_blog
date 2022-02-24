@@ -37,7 +37,7 @@ def trim(words, guess, colorcode,timed=False):
 
     # must process non-greens consecutively
     colfilter = (coded != 'G')
-    chars_xg = np.copy(chars)  # make a copy because we will mutate
+    chars_xg = np.copy(chars)[:,colfilter]  # make a copy of non-green cols because we will mutate
     non_green_columns = zip(guess[colfilter],coded[colfilter],np.arange(sum(colfilter)))
     for (letter, code, pos) in non_green_columns:
         if code=='-' or code=='B':
@@ -89,7 +89,7 @@ def color_result(guess, answer):
             result[i]="-"
     return "".join(result)
 
-def colorCode(guess, answer):
+def get_color_clue(guess, answer):
     return [guess,color_result(guess,answer)]
 
 
